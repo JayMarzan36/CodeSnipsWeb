@@ -1,0 +1,88 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    cursor: pointer;
+}
+
+#mask {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+
+#mask[data-open="true"] {
+    width: 100vw;
+    height: 100vh;
+}
+
+#nav-bar {
+    display: flex;
+}
+
+#menu-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 25px;
+    left: -200px;
+
+    width: 100px;
+    height: 100px;
+
+    background-color: rgba(0,0,0, 0.25);
+    transition: all 0.4s ease;
+    border-radius: 10px;
+}
+
+#menu-content > a {
+    margin: 2px 2px 2px 2px;
+    
+}
+
+#nav-menu {
+    display: flex;
+    position: relative;
+}
+
+#menu-content[data-open="true"] {
+    left: -75px;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+#main-search {
+    color: black;
+    border: solid 2px black;
+    border-radius: 10px;
+    width: 250px;
+    height: 40px;
+
+    transition: all 0.5s ease;
+}
+
+#main-search:not(:disabled):hover {
+    scale: 1.5;
+}
+
+#main-search:not(:disabled):not(:hover) {
+    scale: 1.0;
+}
+
+#main-search[data-menu="true"] {
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: not-allowed;
+}
