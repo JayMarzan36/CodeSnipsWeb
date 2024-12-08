@@ -1,0 +1,96 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    --primaryColor: red;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.nav-bar {
+    background-color: rgba(0, 0, 0, 0,);
+    color: bisque;
+}
+
+.nav-bar-content {
+    position: relative;
+    left: -200px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: bisque;
+    margin: 2px 2px 2px 2px;
+    transition: all .3s ease;
+}
+
+.nav-bar-content > div > a {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar-content > div > a:hover {
+    color: white;
+}
+
+.nav-bar-content[data-open = "true"] {
+    left: 0px;
+}
+
+.nav-bar-content[data-open = "false"] {
+    left: -200px;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.2s ease;
+}
+
+.mask[data-open = "true"] {
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.body-2 {
+    overflow-y: auto;
+    overflow: visible;
+
+}
+
+.body-2[data-open = "true"] {
+    pointer-events: none;
+}
+
+.main-search {
+    display: flex;
+    justify-content: center;
+}
+
+#main-search-in {
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    scale: 1;
+    border: 2px solid black;
+    transition: all 0.3s ease;
+}
+
+#main-search-in:hover {
+    scale: 1.5;
+}
+
+#main-search-in:not(:hover) {
+    scale: 1;
+}
+
+#main-search-in[data-open = "true"] {
+    /* TODO Figure out how to get the input search background to match the mask color*/
+    background-color: rgba(0, 0, 0, 0.3);
+    outline: none;
+}
