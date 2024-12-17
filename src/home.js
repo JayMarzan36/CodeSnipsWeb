@@ -22,3 +22,34 @@ document.getElementById("menu-btn").addEventListener("click", () => {
 mask.addEventListener("click", () => {
     toggleMask();
 });
+
+const testText2 = ["let navOpen = false;", "const navBar = document.getElementById(nav-bar-content);"];
+
+function findSnip(fileArray, seperators, input) {
+    for (i of fileArray) {
+
+        for (j of seperators) {
+
+            let currentText = i.split(j);
+
+            for (k of currentText) {
+
+                if (k === input) return true;
+
+                for (l of seperators) {
+
+                    let currentText2 = k.split(l);
+
+                    for (m of currentText2) {
+
+                        if (m === input) return true;
+
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+console.log(findSnip(testText2, [" ", ",", "(", ")"], "nav-bar-content"));
