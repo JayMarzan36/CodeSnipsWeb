@@ -23,7 +23,12 @@ mask.addEventListener("click", () => {
     toggleMask();
 });
 
-const testText2 = ["let navOpen = false;", "const navBar = document.getElementById(nav-bar-content);"];
+
+
+
+// const testText2 = ["let navOpen = false;", "const navBar = document.getElementById(nav-bar-content);"];
+
+// console.log(findSnip(testText2, [" ", ",", "(", ")"], "nav-bar-content"));
 
 function findSnip(fileArray, seperators, input) {
     for (i of fileArray) {
@@ -52,4 +57,18 @@ function findSnip(fileArray, seperators, input) {
     return false;
 }
 
-console.log(findSnip(testText2, [" ", ",", "(", ")"], "nav-bar-content"));
+
+
+const server_loc = "http://localhost:8000/";
+
+async function getInitial() {
+    try {
+        const res = await fetch(server_loc, { method: "INIT" });
+        let data = await res;
+        console.log(data);
+    } catch (error) {
+        return error;
+    }
+}
+
+getInitial();
