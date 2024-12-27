@@ -1,5 +1,6 @@
 import os
 listOfFiles = []
+#test
 
 #if running from src folder "data"
 # folderStart = "data"
