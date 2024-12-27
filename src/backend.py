@@ -20,15 +20,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             for file in listOfFiles:
-                temp = []
-                temp_File_Name = file
-                fileArray[temp_File_Name] = ""
-                file = folderStart + "/" + file
-                with open(file, "r") as f:
-                    for line in f:
-                        temp.append(line)
-                f.close()
-                fileArray[temp_File_Name] = temp
+                fileArray[file] = file
 
             final_Array = json.dumps(fileArray)
 
