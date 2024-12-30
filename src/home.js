@@ -5,6 +5,9 @@ const mask = document.getElementById("mask");
 const searchInput = document.getElementById("main-search-in");
 const body2 = document.getElementById("body-2");
 const file_List = document.getElementById("file-list");
+const file_contents = document.getElementById("file-contents");
+
+const server_loc = "http://localhost:8000/";
 
 let init_Array = null;
 let init_Array_Keys = null;
@@ -30,6 +33,7 @@ mask.addEventListener("click", () => {
 });
 
 searchInput.addEventListener("change", e => {
+    file_contents.replaceChildren();
     snippet = e.target.value
 
 
@@ -60,32 +64,7 @@ async function update_Found(snippet, callback) {
 
 
 
-function findSnip(fileArray, seperators, input) {
-    for (i of fileArray) {
 
-        for (j of seperators) {
-
-            let currentText = i.split(j);
-
-            for (k of currentText) {
-
-                if (k === input) return true;
-
-                for (l of seperators) {
-
-                    let currentText2 = k.split(l);
-
-                    for (m of currentText2) {
-
-                        if (m === input) return true;
-
-                    }
-                }
-            }
-        }
-    }
-    return false;
-}
 
 function update_Files_List(list_Of_Files) {
     file_List.replaceChildren();
@@ -99,6 +78,18 @@ function update_Files_List(list_Of_Files) {
 
         temp_Span.innerHTML = i;
 
+        //temp_Link.href = `${server_loc}file.html?file=${i}&snip=${snippet}`;
+        temp_Link.addEventListener("click" , e => {
+            file_List.replaceChildren();
+            searchInput.value = "";
+            searchInput.ariaPlaceholder = "Search for file";
+            console.log(e.target);
+            let current_File = server_loc + e.target.innerHTML;
+            let current_Snip = snippet;
+            get_File_Contents(current_File, current_Snip, file_contents);
+
+        });
+
         temp_Link.appendChild(temp_Span);
         temp_List.appendChild(temp_Link);
 
@@ -109,7 +100,6 @@ function update_Files_List(list_Of_Files) {
 
 
 
-const server_loc = "http://localhost:8000/";
 
 async function getInitial() {
     try {
@@ -126,5 +116,3 @@ async function getInitial() {
         return error;
     }
 }
-
-getInitial();

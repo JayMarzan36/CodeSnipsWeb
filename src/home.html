@@ -1,67 +1,54 @@
 <html>
-    <head>
-        <script src="home.js" defer></script>
-        <link rel="stylesheet" href="home.css"/>
-        <title>Code Snips</title>
-    </head>
 
-    <body>
-        
-        <div class="mask" id="mask"></div>
-        
-        
-        <nav class="nav-bar">
-            <button class="menu-btn" id="menu-btn">
-                <span>
-                    Menu
-                </span>
-            </button>
-        </nav>
+<head>
+    <script src="home.js" defer></script>
+    <script src="file.js" defer></script>
+    <link rel="stylesheet" href="home.css" />
+    <title>Code Snips</title>
+</head>
+
+<body>
+
+    <div class="mask" id="mask"></div>
 
 
-        <nav class="nav-bar-content" id="nav-bar-content">
-            <div>
-                <a><span>Add Files Icon</span>Add Files</a>
-                <a><span>Files Icon</span>Files</a>
-                <a><span>Settings Icon</span>Settings</a>
-                <a><span>Account Icon</span>Account</a>
+    <nav class="nav-bar">
+        <button class="menu-btn" id="menu-btn">
+            <span>
+                Menu
+            </span>
+        </button>
+    </nav>
+
+
+    <nav class="nav-bar-content" id="nav-bar-content">
+        <div>
+            <a href="home.html"><span>Home</span></a>
+            <a><span>Add Files Icon</span>Add Files</a>
+            <a><span>Files Icon</span>Files</a>
+            <a><span>Settings Icon</span>Settings</a>
+            <a><span>Account Icon</span>Account</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="body-2" id="body-2">
+            <div class="main-search">
+                <input id="main-search-in" type="search" placeholder="Snippet" />
             </div>
-        </nav>
+        </div>
 
-        <main>
-            <div class="body-2" id="body-2">
-                <div class="main-search">
-                    <input id="main-search-in" type="search" placeholder="Search by key words..."/>
-                </div>
-            </div>
+        <div id="main-content">
+            <ul id="file-list">
+            </ul>
+        </div>
 
-            <div id="main-content">
-                <ul id="file-list">
-                    <li>
-                        <a href=""><span>Test file 1</span></a>
-                    </li>
-                    <li>
-                        <a href=""><span>Test file 1</span></a>
-                    </li>   
-                    <li>
-                        <a href=""><span>Test file 1</span></a>
-                    </li>   
-                    <li>
-                        <a href=""><span>Test file 1</span></a>
-                    </li>   
-                    <li>
-                        <a href=""><span>Test file 1</span></a>
-                    </li>    
-                </ul>
-                
-
-                
+        <div>
+            <div id="file-contents"></div>
+        </div>
+    </main>
 
 
+</body>
 
-            </div>
-        </main>
-
-        
-    </body>
 </html>

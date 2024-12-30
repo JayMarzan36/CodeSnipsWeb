@@ -9,6 +9,13 @@ body {
     height: 100vh;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 a {
     cursor: pointer;
 }
@@ -128,3 +135,21 @@ li:not(:hover) {
     margin: 30px 30px 30px 30px;
 }
 
+#file-contents {
+    min-width: 400px;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 30px;
+}
+
+#spacer {
+    padding: 10px;
+}
+
+
+#snip {
+    background-color: rgba(0, 255, 0, 0.4);
+}

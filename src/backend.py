@@ -5,29 +5,36 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class HTTPRequestHandler(BaseHTTPRequestHandler):
 
-    def do_INIT(self):
-        listOfFiles = []
-        fileArray = {}
-        # if running from src folder "data"
-        # folderStart = "data"
+    def do_FILE(self):
         folderStart = "data"
-        for filename in os.listdir(folderStart):
-            listOfFiles.append(filename)
+        file_contents = {}
+        temp = []
+        file_requested = self.path.split("/")[-1].split("?")[0]
+        file_requested = folderStart + '/' + file_requested
+        print("File requested: ", file_requested)
 
-        if len(listOfFiles) >= 1:
+        file_path = os.path.join(os.getcwd(), file_requested)
+        print(file_path)
+
+        if os.path.isfile(file_requested):
             self.send_response(200)
             self.send_header("Content-Type", "text.html")
             self.end_headers()
-
-            for file in listOfFiles:
-                fileArray[file] = file
-
-            final_Array = json.dumps(fileArray)
-
-            self.wfile.write(bytes(final_Array, "utf-8"))
+            
+            with open(file_requested, "r") as f:
+                for line in f:
+                    temp.append(line)
+                f.close()
+            
+            file_contents['contents'] = temp
+            final_contents = json.dumps(file_contents)
+            
+            self.wfile.write(bytes(final_contents, "utf-8"))
+            
 
         else:
-            self.send_response(404, "No files found")
+            print(f"404 Not Found: {file_requested}")
+            self.send_response(404)
             self.end_headers()
 
     def do_GET(self):
