@@ -19,8 +19,8 @@ function toggleMask() {
     navOpen = !navOpen;
     navBar.dataset.open = `${navOpen}`;
     mask.dataset.open = `${navOpen}`;
-    body2.dataset.open = `${navOpen}`;
-    searchInput.open = `${navOpen}`;
+    if (body2 !== null) body2.dataset.open = `${navOpen}`;
+    if (searchInput !== null) searchInput.open = `${navOpen}`;
 }
 
 
@@ -32,16 +32,18 @@ mask.addEventListener("click", () => {
     toggleMask();
 });
 
-searchInput.addEventListener("change", e => {
-    file_contents.replaceChildren();
-    snippet = e.target.value
-
-
-    update_Found(snippet, (updated) => {
-        update_Files_List(found_Files);
+if (searchInput !== null) {
+    searchInput.addEventListener("change", e => {
+        file_contents.replaceChildren();
+        snippet = e.target.value
+    
+    
+        update_Found(snippet, (updated) => {
+            update_Files_List(found_Files);
+        });
+    
     });
-
-});
+}
 
 async function send_Snip(user_input) {
     try {
@@ -69,7 +71,6 @@ async function update_Found(snippet, callback) {
 function update_Files_List(list_Of_Files) {
     file_List.replaceChildren();
     const files = list_Of_Files["found"];
-    console.log(files);
 
     for (i of files) {
         const temp_List = document.createElement("li");
@@ -80,10 +81,14 @@ function update_Files_List(list_Of_Files) {
 
         //temp_Link.href = `${server_loc}file.html?file=${i}&snip=${snippet}`;
         temp_Link.addEventListener("click" , e => {
-            file_List.replaceChildren();
-            searchInput.value = "";
-            searchInput.ariaPlaceholder = "Search for file";
-            console.log(e.target);
+            // file_List.replaceChildren();
+            file_contents.replaceChildren();
+            if (searchInput !== null) {
+                searchInput.value = "";
+                searchInput.ariaPlaceholder = "Search for file";
+            } else {
+                snippet = " ";
+            }
             let current_File = server_loc + e.target.innerHTML;
             let current_Snip = snippet;
             get_File_Contents(current_File, current_Snip, file_contents);

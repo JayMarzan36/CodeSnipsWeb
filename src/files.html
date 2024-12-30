@@ -3,12 +3,11 @@
 <head>
     <script src="file.js" defer></script>
     <script src="home.js" defer></script>
-    <link rel="stylesheet" href="home.css" />
-    <title>Code Snips</title>
+    <script src="files.js" defer></script>
+    <link rel="stylesheet" href="files.css">
 </head>
 
 <body>
-
     <div class="mask" id="mask"></div>
 
     <nav class="nav-bar">
@@ -29,21 +28,25 @@
     </nav>
 
     <main>
-
-        <div class="body-2" id="body-2">
-            <div class="main-search">
-                <input id="main-search-in" type="search" placeholder="Snippet" />
+        <div>
+            <h1>Uploaded Files</h1>
+        </div>
+        
+        <div id="main-content">
+            <div id="file-upload-container">
+                <form id="input-file-form">
+                    <label for="input-file" id="input-file-label">Upload New File</label>
+                    <input type="file" id="input-file" hidden>
+                </form>
+                <ul id="file-list">
+                </ul>
+            </div>
+            
+            <div>
+                <div id="file-contents"></div>
             </div>
         </div>
 
-        <div id="main-content">
-            <ul id="file-list">
-            </ul>
-        </div>
-
-        <div>
-            <div id="file-contents"></div>
-        </div>
     </main>
 </body>
 

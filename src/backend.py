@@ -77,17 +77,20 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             temp = []
             for file in listOfFiles:
                 temp_File_Name = file
-                file = folderStart + "/" + file
-                with open(file, "r") as f:
-                    print(file)
-                    for line in f:
-                        split_Line = re.split(r'["():#\s]+', line)
-                        for i in split_Line:
-                            if str(i) == snippet:
-                                print(split_Line)
-                                temp.append(temp_File_Name)
-                                break
-                f.close()
+                if (snippet == "ALLGOOD"):
+                    temp.append(temp_File_Name)
+                else:
+                    file = folderStart + "/" + file
+                    with open(file, "r") as f:
+                        print(file)
+                        for line in f:
+                            split_Line = re.split(r'["():#\s]+', line)
+                            for i in split_Line:
+                                if str(i) == snippet:
+                                    print(split_Line)
+                                    temp.append(temp_File_Name)
+                                    break
+                    f.close()
 
             fileArray["found"] = temp
             final_Array = json.dumps(fileArray)
@@ -97,6 +100,31 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(404, "No files found")
             self.end_headers()
 
+
+    def do_POST(self):
+        if self.path == "/upload":
+            content_length = int(self.headers['Content-length'])
+            
+            messy_data = self.rfile.read(content_length).decode('utf-8');
+            clean_data = json.loads(messy_data)
+            
+            file_name = clean_data.get('file_Name')
+            file_content = clean_data.get('file_Content')
+            
+            save_path = os.path.join('data', file_name)
+            os.makedirs('data', exist_ok = True)
+            
+            with open(save_path, 'w') as file:
+                file.write(file_content)
+            
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            response = "GOOD"
+            self.wfile.write(bytes(response, 'utf-8'))
+        else:
+            self.send_response(404)
+            self.end_headers()
 
 if __name__ == "__main__":
     server = HTTPServer(("localhost", 8000), HTTPRequestHandler)

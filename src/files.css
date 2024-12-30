@@ -91,64 +91,69 @@ li:not(:hover) {
     transition: background-color 0.3s ease;
 }
 
-.body-2 {
-    overflow-y: auto;
-    overflow: visible;
-
-}
-
-.body-2[data-open = "true"] {
-    pointer-events: none;
-}
-
-.main-search {
-    display: flex;
-    justify-content: center;
-}
-
-#main-search-in {
-    height: 50px;
-    width: 300px;
-    border-radius: 10px;
-    scale: 1;
-    border: 2px solid black;
-    transition: all 0.5s ease;
-}
-
-#main-search-in:hover {
-    scale: 1.5;
-}
-
-#main-search-in:not(:hover) {
-    scale: 1;
-}
-
-#main-search-in[data-open = "true"] {
-    background-color: rgba(0, 0, 0, 0.3);
-    outline: none;
-}
-
 #main-content {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 30px 30px 30px 30px;
 }
 
 #file-contents {
+    overflow-y: auto;
     min-width: 400px;
     max-width: fit-content;
+    min-height: 400px;
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     margin: 30px;
+    padding: 40px;
+    border: solid black 5px;
+    border-radius: 5px;
+
+}
+
+#file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    overflow-y: auto;
+    min-width: 100px;
+    max-width: 200px;
+    min-height: 400px;
+    max-height: 400px;
+    margin: 30px;
+    padding: 40px;
+    border: solid black 5px;
+    border-radius: 5px;
+}
+
+#input-file-form {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-file-label {
+    cursor: pointer;
+    border: solid black 5px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 0.5s ease;
+}
+
+#input-file-label:hover {
+    scale: 1.5;
+}
+
+#input-file-label:not(:hover) {
+    scale: 1.0;
 }
 
 #spacer {
     padding: 10px;
-}
-
-
-#snip {
-    background-color: rgba(0, 255, 0, 0.4);
 }
