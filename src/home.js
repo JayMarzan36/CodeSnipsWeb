@@ -36,12 +36,12 @@ if (searchInput !== null) {
     searchInput.addEventListener("change", e => {
         file_contents.replaceChildren();
         snippet = e.target.value
-    
-    
+
+
         update_Found(snippet, (updated) => {
             update_Files_List(found_Files);
         });
-    
+
     });
 }
 
@@ -52,7 +52,7 @@ async function send_Snip(user_input) {
         const result = JSON.parse(data);
         console.log(result);
         return result;
-        }
+    }
     catch (error) {
         return error;
     }
@@ -79,9 +79,7 @@ function update_Files_List(list_Of_Files) {
 
         temp_Span.innerHTML = i;
 
-        //temp_Link.href = `${server_loc}file.html?file=${i}&snip=${snippet}`;
-        temp_Link.addEventListener("click" , e => {
-            // file_List.replaceChildren();
+        temp_Link.addEventListener("click", e => {
             file_contents.replaceChildren();
             if (searchInput !== null) {
                 searchInput.value = "";

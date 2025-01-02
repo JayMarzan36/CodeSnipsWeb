@@ -44,17 +44,17 @@ li:not(:hover) {
 }
 
 .nav-bar {
-    background-color: rgba(0, 0, 0, 0,);
-    color: bisque;
+    background-color: rgba(0, 0, 0, 0);
+    color: wheat;
 }
 
 .nav-bar-content {
     position: relative;
     left: -200px;
-    width: 150px;
+    width: 50px;
     display: flex;
     flex-direction: column;
-    background-color: bisque;
+    background-color: white;
     margin: 2px 2px 2px 2px;
     transition: all .3s ease;
 }
@@ -65,7 +65,7 @@ li:not(:hover) {
 }
 
 .nav-bar-content > div > a:hover {
-    color: white;
+    color: black;
 }
 
 .nav-bar-content[data-open = "true"] {
@@ -119,7 +119,6 @@ li:not(:hover) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px;
     overflow-y: auto;
     min-width: 100px;
     max-width: 200px;
@@ -156,4 +155,18 @@ li:not(:hover) {
 
 #spacer {
     padding: 10px;
+}
+
+#menu-btn {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#menu-btn:hover {
+    scale: 1.2;
+}
+
+#menu-btn:not(:hover) {
+    scale: 1;
 }
